@@ -13,7 +13,5 @@
 
 int main()
 {
-    //This section tests the concept class
-
     return 0;
 }
