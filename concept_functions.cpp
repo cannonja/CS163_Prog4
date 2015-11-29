@@ -59,7 +59,7 @@ int concept::set_concept(char new_concept[])
     if (!new_concept)
         return 0;
 
-    concept_name = new char[srtlen(new_concept) + 1];
+    concept_name = new char[strlen(new_concept) + 1];
     strcpy(concept_name, new_concept);
 
     return 1;
