@@ -23,7 +23,7 @@ class concept
         int add_advantage(char new_advantage[]);
         int add_disadvantage(char new_disadvantage[]);
         int copy_concept(concept & copy_from);
-        void display();
+        int display();
 
     private:
         int list_length;
