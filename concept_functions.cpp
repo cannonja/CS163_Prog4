@@ -80,6 +80,30 @@ int concept::set_structure(char new_structure[])
 }
 
 
+//This function takes a c-string as an argument and adds
+//a new advantage to the list of advantages
+int concept::add_advantage(char new_advantage[])
+{
+    int counter = 0;
+    
+    //If argument is NULL, method fails
+    if (!new_advantage)
+        return 0;
+
+    //Iterate to current index
+    while (advantage_list[counter] && counter < list_length)
+        ++counter;
+    
+    //If list if full, method fails
+    if (counter == list_length)
+        return 0;
+
+
+    advantage_list[counter] = new char[strlen(new_advantage) + 1];
+    strcpy(advantage_list[counter], new_advantage);
+
+    return 1;
+}
 
 
 
