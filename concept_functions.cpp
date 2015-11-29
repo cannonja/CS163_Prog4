@@ -106,6 +106,31 @@ int concept::add_advantage(char new_advantage[])
 }
 
 
+//This function takes a c-string as an argument and adds
+//a new disadvantage to the list of disadvantages
+int concept::add_disadvantage(char new_disadvantage[])
+{
+    int counter = 0;
+    
+    //If argument is NULL, method fails
+    if (!new_disadvantage)
+        return 0;
+
+    //Iterate to current index
+    while (disadvantage_list[counter] && counter < list_length)
+        ++counter;
+    
+    //If list if full, method fails
+    if (counter == list_length)
+        return 0;
+
+
+    disadvantage_list[counter] = new char[strlen(new_disadvantage) + 1];
+    strcpy(disadvantage_list[counter], new_disadvantage);
+
+    return 1;
+}
+
 
 
 
