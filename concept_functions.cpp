@@ -25,7 +25,7 @@ concept::concept(int length)
     }
 }
 
-
+//Destructor
 concept::~concept()
 {
     delete [] concept_name;
@@ -34,6 +34,7 @@ concept::~concept()
     delete [] structure_name;
     structure_name = NULL;
 
+    //Deallocate array of char pointers
     for (int i = 0; i < list_length; ++i)
     {
         delete [] advantage_list[i];
@@ -49,6 +50,27 @@ concept::~concept()
     delete [] disadvantage_list;
     disadvantage_list = NULL;
 }
+
+
+//This function takes a c-string and sets the consept name
+int concept::set_concept(char new_concept[])
+{
+    
+    if (!new_concept)
+        return 0;
+
+    concept_name = new char[srtlen(new_concept) + 1];
+    strcpy(concept_name, new_concept);
+
+    return 1;
+}
+
+
+
+
+
+
+
 
 
 
