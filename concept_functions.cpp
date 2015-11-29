@@ -169,8 +169,11 @@ int concept::copy_concept(concept & copy_from)
 
 
 //This method displays the contents of the data members
-void concept::display()
+int concept::display()
 {
+    if (!concept_name || !structure_name || !advantage_list || !disadvantage_list)
+        return 0;
+
     cout << "List length: " << list_length << endl;
     cout << "Concept: " << concept_name << endl;
     cout << "Data structure: " << structure_name << endl;
@@ -193,6 +196,8 @@ void concept::display()
             cout << endl;
     }
     cout << endl;
+
+    return 1;
 
 }
 
