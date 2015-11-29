@@ -52,7 +52,7 @@ concept::~concept()
 }
 
 
-//This function takes a c-string and sets the consept name
+//This function takes a c-string and sets the concept name
 int concept::set_concept(char new_concept[])
 {
     
@@ -65,6 +65,19 @@ int concept::set_concept(char new_concept[])
     return 1;
 }
 
+
+//This function takes a c-string and sets the data structure name
+int concept::set_structure(char new_structure[])
+{
+    
+    if (!new_structure)
+        return 0;
+
+    structure_name = new char[strlen(new_structure) + 1];
+    strcpy(structure_name, new_structure);
+
+    return 1;
+}
 
 
 
