@@ -132,9 +132,36 @@ int concept::add_disadvantage(char new_disadvantage[])
 }
 
 
+//This function takes a concept as an argument and copies
+//the contests of its data members to the current instance
+//of the concept object
+int concept::copy_concept(concept & copy_from)
+{
+    if (copy_from.list_length < 0)
+        return 0;
 
+    list_length = copy_from.list_length;
 
+    if (copy_from.concept_name && copy_from.structure_name && copy_from.advantage_list && copy_from.disadvantage_list)
+        return 0;
 
+    if (!set_concept(copy_from.concept_name))
+        return 0;
+
+    if (!set_structure(copy_from.structure_name))
+        return 0;
+
+    for (int i = 0; i < list_length; ++i)
+    {
+        if (!add_advantage(copy_from.advantage_list[i]))
+            return 0;
+
+        if (!add_disadvantage(copy_from.disadvantage_list[i]))
+            return 0;
+    }
+
+    return 1;
+}
 
 
 
