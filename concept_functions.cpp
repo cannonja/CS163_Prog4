@@ -140,8 +140,10 @@ int concept::copy_concept(concept & copy_from)
     if (copy_from.list_length < 0)
         return 0;
 
+    //Copy int
     list_length = copy_from.list_length;
 
+    //If any are NULL, method fails
     if (copy_from.concept_name && copy_from.structure_name && copy_from.advantage_list && copy_from.disadvantage_list)
         return 0;
 
@@ -150,7 +152,8 @@ int concept::copy_concept(concept & copy_from)
 
     if (!set_structure(copy_from.structure_name))
         return 0;
-
+    
+    //Copy lists
     for (int i = 0; i < list_length; ++i)
     {
         if (!add_advantage(copy_from.advantage_list[i]))
@@ -163,6 +166,35 @@ int concept::copy_concept(concept & copy_from)
     return 1;
 }
 
+
+
+//This method displays the contents of the data members
+void concept::display()
+{
+    cout << "List length: " << list_length << endl;
+    cout << "Concept: " << concept_name << endl;
+    cout << "Data structure: " << structure_name << endl;
+    
+    cout << "Advantages:\n";
+    for (int i = 0; i < list_length; ++i)
+    {
+        cout << "\t" << i << ") " << advantage_list[i];
+        if (i != list_length - 1)
+            cout << endl;
+    }
+    cout << endl;
+
+
+    cout << "Disadvantages:\n";
+    for (int i = 0; i < list_length; ++i)
+    {
+        cout << "\t" << i << ") " << disadvantage_list[i];
+        if (i != list_length - 1)
+            cout << endl;
+    }
+    cout << endl;
+
+}
 
 
 
