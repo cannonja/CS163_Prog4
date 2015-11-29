@@ -16,7 +16,7 @@ using namespace std;
 class concept
 {
     public:
-        concept();
+        concept(int length);
         ~concept();
         int set_concept(char new_concept[]);
         int set_structure(char new_structure[]);
@@ -26,6 +26,7 @@ class concept
         int display();
 
     private:
+        int list_length;
         char * concept_name;
         char * structure_name;
         char ** advantage_list;
