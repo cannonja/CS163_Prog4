@@ -171,32 +171,33 @@ int concept::copy_concept(concept & copy_from)
 //This method displays the contents of the data members
 int concept::display()
 {
+    int index = 0;//For adv/disadv
+
     if (!concept_name || !structure_name || !advantage_list || !disadvantage_list)
         return 0;
 
     cout << "List length: " << list_length << endl;
     cout << "Concept: " << concept_name << endl;
     cout << "Data structure: " << structure_name << endl;
-    
+   
+    //Display numbered list
     cout << "Advantages:\n";
-    for (int i = 0; i < list_length; ++i)
+    do 
     {
-        cout << "\t" << i << ") " << advantage_list[i];
-        if (i != list_length - 1)
-            cout << endl;
-    }
-    cout << endl;
+        cout << "\t" << (index + 1) << ") " << advantage_list[index] << endl;
+        
+    } while (advantage_list[++index]);
+    index = 0;//Reset index for disadvantages
 
 
+    //Display numbered list
     cout << "Disadvantages:\n";
-    for (int i = 0; i < list_length; ++i)
+    do 
     {
-        cout << "\t" << i << ") " << disadvantage_list[i];
-        if (i != list_length - 1)
-            cout << endl;
-    }
-    cout << endl;
-
+        cout << "\t" << (index + 1) << ") " << disadvantage_list[index] << endl;
+        
+    } while (disadvantage_list[++index]);
+   
     return 1;
 
 }
