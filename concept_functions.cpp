@@ -137,6 +137,8 @@ int concept::add_disadvantage(char new_disadvantage[])
 //of the concept object
 int concept::copy_concept(concept & copy_from)
 {
+    int index = 0;//Adv-Disadv list index variable
+
     if (copy_from.list_length < 0)
         return 0;
 
@@ -144,7 +146,7 @@ int concept::copy_concept(concept & copy_from)
     list_length = copy_from.list_length;
 
     //If any are NULL, method fails
-    if (copy_from.concept_name && copy_from.structure_name && copy_from.advantage_list && copy_from.disadvantage_list)
+    if (!copy_from.concept_name || !copy_from.structure_name || !copy_from.advantage_list || !copy_from.disadvantage_list)
         return 0;
 
     if (!set_concept(copy_from.concept_name))
@@ -154,14 +156,21 @@ int concept::copy_concept(concept & copy_from)
         return 0;
     
     //Copy lists
-    for (int i = 0; i < list_length; ++i)
+    do
     {
-        if (!add_advantage(copy_from.advantage_list[i]))
+        if (!add_advantage(copy_from.advantage_list[index]))
             return 0;
 
-        if (!add_disadvantage(copy_from.disadvantage_list[i]))
+    } while (copy_from.advantage_list[++index]);
+    index = 0;//Reset index
+    
+    do
+    {
+        if (!add_disadvantage(copy_from.disadvantage_list[index]))
             return 0;
-    }
+
+    } while (copy_from.advantage_list[++index]);
+
 
     return 1;
 }
