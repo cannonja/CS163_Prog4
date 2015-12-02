@@ -24,6 +24,7 @@ class concept
         int add_disadvantage(char new_disadvantage[]);
         int copy_concept(concept & copy_from);
         int display();
+        int get_hash();
 
     private:
         int list_length;
