@@ -21,7 +21,9 @@ class concept
         concept();
         ~concept();
         int set_concept(char new_concept[]);
+        int match_concept(char to_match[]);
         int set_structure(char new_structure[]);
+        int match_structure(char to_match[]);
         int add_advantage(char new_advantage[]);
         int add_disadvantage(char new_disadvantage[]);
         int copy_concept(concept & copy_from);
@@ -50,11 +52,12 @@ struct node
 class tree
 {
     public:
-        tree();
+        tree();//done
         ~tree();
-        int insert_wrapper(concept & to_insert);
-        int insert(concept & to_insert, node * & root_ptr);
-        int search(char concept_name[]);
+        int insert_wrapper(concept & to_insert);//done
+        int insert(concept & to_insert, node * & root_ptr);//done
+        int search_wrapper(char concept_name[]);//done
+        int search(char concept_name[], node * root_ptr);//done
         int retrieve(concept & to_fill, char concept_name[]);
         int remove_concept(char concept_name[]);
         int remove_structure(char structure_name[]);
