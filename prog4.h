@@ -18,7 +18,7 @@ const int LIST_LENGTH = 5;
 class concept
 {
     public:
-        concept(int length = LIST_LENGTH);
+        concept();
         ~concept();
         int set_concept(char new_concept[]);
         int set_structure(char new_structure[]);
