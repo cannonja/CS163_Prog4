@@ -8,9 +8,9 @@
 #include "prog4.h"
 
 //Constructor
-concept::concept(int length)
+concept::concept()
 {
-    list_length = length;
+    list_length = LIST_LENGTH;
     concept_name = NULL;
     structure_name = NULL;
 
