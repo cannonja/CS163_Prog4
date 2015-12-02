@@ -66,6 +66,19 @@ int concept::set_concept(char new_concept[])
 }
 
 
+//This function takes a c-string as an argument
+//and compares it with the concept.  It returns
+//1 if they're a match and 0 otherwise
+int concept::match_concept(char to_match[])
+{
+    if (!strcmp(concept_name, to_match))
+        return 1;
+
+    return 0;
+}
+
+
+
 //This function takes a c-string and sets the data structure name
 int concept::set_structure(char new_structure[])
 {
@@ -78,6 +91,20 @@ int concept::set_structure(char new_structure[])
 
     return 1;
 }
+
+
+//This function takes a c-string as an argument
+//and compares it with the concept.  It returns
+//1 if they're a match and 0 otherwise
+int concept::match_structure(char to_match[])
+{
+    if (!strcmp(structure_name, to_match))
+        return 1;
+
+    return 0;
+}
+
+
 
 
 //This function takes a c-string as an argument and adds
