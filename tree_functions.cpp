@@ -16,7 +16,9 @@ tree::tree()
 //Destructor
 tree::~tree()
 {
-    delete root;
+    int result;
+
+    result = destroy(root);
     root = NULL;
 }
 
@@ -116,28 +118,135 @@ int tree::retrieve_wrapper(concept & to_fill, char concept_name[])
 }
 
 //This function searches the tree recursively
-int tree::retrieve(concept & to_fill, char concept_name[], node * ptr)
+int tree::retrieve(concept & to_fill, char concept_name[], node * root_ptr)
 {
-    if (!ptr)
+    if (!root_ptr)
         return 0;
 
     //If there is a match, return 1 and fill concept
-    if (ptr -> data.match_concept(concept_name))
+    if (root_ptr -> data.match_concept(concept_name))
     {
-        if (!to_fill.copy_concept(ptr -> data))
+        if (!to_fill.copy_concept(root_ptr -> data))
             return 0;
         return 1;
     }
 
     //Otherwise traverse recursively
-    if (retrieve(to_fill, concept_name, ptr -> left))
+    if (retrieve(to_fill, concept_name, root_ptr -> left))
         return 1;
-    if (retrieve(to_fill, concept_name, ptr -> right))
+    if (retrieve(to_fill, concept_name, root_ptr -> right))
         return 1;
 
     return 0;
 
 }
+
+
+//Wrapper function that calls destroy recursively
+int tree::destroy_wrapper()
+{
+    return destroy(root);
+}
+
+
+//This function takes a pointer as an argument
+//and destroys the tree
+int tree::destroy(node * & root_ptr)
+{
+    //Tried to delete empty tree
+    if (!root_ptr)
+        return 0;
+
+    //If leaf, delete
+    if (!root_ptr -> left && !root_ptr -> right)
+    {
+        delete root_ptr;
+        root_ptr = NULL;
+        return 1;
+    }
+
+    //Delete left subtree, then right
+    if (destroy(root_ptr -> left))
+        return 1;
+    if (destroy(root_ptr -> right))
+        return 1;
+
+    return 0;
+
+}
+
+//Wrapper function that calls display_in_order recursively
+int tree::display_in_order_wrapper()
+{
+    return display_in_order(root);
+}
+
+
+//This function displays the concept's info
+//ordered by hash
+int tree::display_in_order(node * root_ptr)
+{
+    //Tried to display empty tree
+    if (!root_ptr)
+        return 0;
+
+    //If at leaf, display concept
+    if (!root_ptr -> left && !root_ptr -> right)
+    {
+        if (!(root -> data.display()))
+            return 0;
+        return 1;
+    }
+
+    //Otherwise, traverse recursively to the left first,
+    //then the right
+    if (display_in_order(root_ptr -> left))
+        return 1;
+    if (display_in_order(root_ptr -> right))
+        return 1;
+
+    return 0;
+
+}
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
