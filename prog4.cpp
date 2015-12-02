@@ -14,7 +14,7 @@
 int main()
 {
     //This section tests the concept class
-
+    /*
     int len = 5;//list_length
     char con1[20] = "Linear";//Concept name
     char st1[20] = "LLL";//Data structure name
@@ -30,13 +30,10 @@ int main()
     cout << test1.set_concept(con1);
     cout << test1.set_structure(st1);
     cout << endl;
+    
+    //Get hash value
+    cout << test1.get_hash() << endl;
 
-
-    //Disadvantages not getting displayed and bullet
-    //numbering off!!
-    //
-    //
-    //
     //Set advantages and disadvantages
     for (int i = 0; i < 3; ++i)
     {
@@ -52,6 +49,24 @@ int main()
     //Should match first object
     cout << "copy_concept(test1) result: " << test2.copy_concept(test1) << endl;
     cout << "display() result: " << test2.display() << endl;
+    */
 
     return 0;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
