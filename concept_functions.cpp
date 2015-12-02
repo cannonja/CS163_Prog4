@@ -245,23 +245,17 @@ int concept::display()
 int concept::get_hash()
 {
     //Variables to calculate average ASCII value
-    int sum = 0, count = 0;
+    int sum = 0;
     int length;//Loop condition
 
-    if (!concept_name || !structure_name)
+    if (!concept_name)
         return 0;
 
     length = strlen(concept_name);
-    count += length;
     for (int i = 0; i < length; ++i)
         sum += concept_name[i];
 
-    length = strlen(structure_name);
-    count += length;
-    for (int i = 0; i < length; ++i)
-        sum += structure_name[i];
-
-    return (sum / count);
+    return (sum / length);
 
 }
 
