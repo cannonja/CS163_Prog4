@@ -70,28 +70,31 @@ int tree::insert(concept & to_insert, node * & root_ptr)
 //This function takes a c-string of a concept name 
 //and returns 1 if the concept is in the tree,
 //0 otherwise
-int tree::search_wrapper(char concept_name[])
+node** tree::search_wrapper(char concept_name[])
 {
     return search(concept_name, root);
 }
 
-//This function searches the tree recursively
-int tree::search(char concept_name[], node * ptr)
+//This function searches the tree recursively and returns
+//the address of the left or right pointer to the matching node
+//Returns 0 if no match
+node** tree::search(char concept_name[], node * ptr)
 {
+    node ** result;
+
     if (!root)
         return 0;
 
     //If there is a match, return 1
     if (root -> data.match_concept(concept_name))
-        return 1;
+        return &root;
 
     //Otherwise traverse recursively
-    if (search(concept_name, root -> left))
-        return 1;
-    if (search(concept_name, root -> right))
-        return 1;
+    result = search(concept_name, root -> left);
+    if (result)
+        return result;
 
-    return 0;
+    return search(concept_name, root -> right);
 
 }
 
@@ -209,6 +212,51 @@ int tree::display_in_order(node * root_ptr)
 
 }
         
+
+
+//Wrapper function for concept removal
+int tree::remove_concept_wrapper(char concept_name[])
+{
+    return remove_concept(concept_name, root);
+}
+
+
+//This function takes a concept name and node pointer and
+//recursively removes said node
+//It returns 0 if unsuccessful
+int tree::remove_concept(char concept_name[], node * & root_ptr)
+{
+    node * temp;
+
+    //Empty pointer
+    if (!root_ptr)
+        return 0;
+
+    //No children case
+    if (!root_ptr -> left && !root_ptr -> right)
+    {
+        delete root_ptr;
+        root_ptr = NULL;
+        return 1;
+    }
+
+    //Two children case
+    if (root_ptr -> left && root_ptr -> right)
+    {
+    }
+
+    //One child case
+    if (root_ptr -> left)
+        temp = root_ptr -> left;
+    else
+        temp = root_ptr -> right;
+
+    delete root_ptr;
+    root_ptr = temp;
+
+    return 1;
+
+}
 
 
 
