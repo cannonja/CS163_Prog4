@@ -13,10 +13,12 @@
 
 using namespace std;
 
+const int LIST_LENGTH = 5;
+
 class concept
 {
     public:
-        concept(int length);
+        concept(int length = LIST_LENGTH);
         ~concept();
         int set_concept(char new_concept[]);
         int set_structure(char new_structure[]);
@@ -50,7 +52,8 @@ class tree
     public:
         tree();
         ~tree();
-        int insert(concept & to_insert);
+        int insert_wrapper(concept & to_insert);
+        int insert(concept & to_insert, node * & root_ptr);
         int search(char concept_name[]);
         int retrieve(concept & to_fill, char concept_name[]);
         int remove_concept(char concept_name[]);
