@@ -94,7 +94,51 @@ int tree::search(char concept_name[], node * ptr)
 }
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+//This function takes a c-string of a concept name 
+//and if there is a match, returns 1 and fills the 
+//concept in the argument
+//Otherwise, it returns 0
+int tree::retrieve_wrapper(concept & to_fill, char concept_name[])
+{
+    return retrieve(to_fill, concept_name, root);
+}
+
+//This function searches the tree recursively
+int tree::retrieve(concept & to_fill, char concept_name[], node * ptr)
+{
+    if (!ptr)
+        return 0;
+
+    //If there is a match, return 1 and fill concept
+    if (ptr -> data.match_concept(concept_name))
+    {
+        if (!to_fill.copy_concept(ptr -> data))
+            return 0;
+        return 1;
+    }
+
+    //Otherwise traverse recursively
+    if (retrieve(to_fill, concept_name, ptr -> left))
+        return 1;
+    if (retrieve(to_fill, concept_name, ptr -> right))
+        return 1;
+
+    return 0;
+
+}
+
 
 
 
