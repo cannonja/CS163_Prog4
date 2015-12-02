@@ -212,6 +212,34 @@ int concept::display()
 }
 
 
+//This function returns the hash value for the concept and 
+//data structure names combined
+//It returns 0 if it's unsuccessful
+int concept::get_hash()
+{
+    //Variables to calculate average ASCII value
+    int sum = 0, count = 0;
+    int length;//Loop condition
+
+    if (!concept_name || !structure_name)
+        return 0;
+
+    length = strlen(concept_name);
+    count += length;
+    for (int i = 0; i < length; ++i)
+        sum += concept_name[i];
+
+    length = strlen(structure_name);
+    count += length;
+    for (int i = 0; i < length; ++i)
+        sum += structure_name[i];
+
+    return (sum / count);
+
+}
+
+    
+
 
 
 
