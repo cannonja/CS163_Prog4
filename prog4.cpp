@@ -21,7 +21,9 @@ int main()
     char adv[5][20] = {"Fast", "Remove at head", "Stretchable"};//Advantages
     char disadv[5][20] = {"Memory", "Hard to sort", "Hard to search"};//Disadvantages
 
-    concept test1(len), test2(len);
+    //concept test1(len), test2(len);
+    concept test1, test2;
+
 
     //Should return 0 - NULL data members
     cout << test1.display() << endl;
