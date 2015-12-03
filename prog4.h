@@ -53,20 +53,24 @@ class tree
 {
     public:
         tree();//done
-        ~tree();
+        ~tree();//done
+        int import_data(char file_path[]);
         int insert_wrapper(concept & to_insert);//done
         int insert(concept & to_insert, node * & root_ptr);//done
-        int search_wrapper(char concept_name[]);//done
-        int search(char concept_name[], node * root_ptr);//done
-        int retrieve(concept & to_fill, char concept_name[]);
-        int remove_concept(char concept_name[]);
-        int remove_structure(char structure_name[]);
-        int destroy();
-        int display_in_order();
-        int hash_function(char concept_name[]);
+        node** search_wrapper(char concept_name[]);//done
+        node** search(char concept_name[], node * root_ptr);//done
+        int retrieve_wrapper(concept & to_fill, char concept_name[]);//done
+        int retrieve(concept & to_fill, char concept_name[], node * root_ptr);//done
+        int remove_concept(char concept_name[]);//done
+        int destroy_wrapper();//done
+        int destroy(node * & root_ptr);//done
+        int display_in_order_wrapper();//done
+        int display_in_order(node * root_ptr);//done
+        node** inorder_traverse(node * & root_ptr, node * & temp);//done 
 
     private:
         node * root;
+        concept * array;
 
 };
 

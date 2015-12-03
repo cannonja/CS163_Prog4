@@ -1,0 +1,6 @@
+Hash Table:Array of LLLs:Instantaneous search, Fun:Possible collisions, No sorting
+Stack:LLL:Easy to push, Easy to pop:Can only process data at head, No searching
+Queue:CLL:Easy to enqueue, Easy to dequeue:Can't search or sort, Only process at end
+Ordered List:DLL:Can traverse back and forth:Extra memory, No instant access
+Tree:BST:Automatically sorted, Easy to search:Extra pointers, Can have unfavorable shape
+Graph:Array of LLLs:Fast performance:Sorting not supported
